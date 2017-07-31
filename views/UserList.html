@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用戶列表</title>
+
+</head>
+
+<body>
+    <a href="/users/add/">新增用戶</a>
+    <table>
+        <tr>
+            <th>用戶名</th>
+            <th>信箱</th>
+            <th>操作</th>
+        </tr>
+        <% for(var i in user){ %>
+            <tr>
+                <td>
+                    <%= user[i].username %>
+                </td>
+                <td>
+                    <%= user[i].email %>
+                </td>
+                <td>
+                    <div>
+                        <a href="/users/detail/<%= user[i]._id %>">查看</a>
+                        <a href="/users/edit/<%= user[i]._id %>">編輯</a>
+                        <a href="#" class="del" data-id="<%= user[i]._id %>">刪除</a>
+                    </div>
+                </td>
+            </tr>
+            <% } %>
+    </table>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(".del").on("click", function () {
+        var id = $(this).data("id");
+        $.ajax({
+            url: "/users/del?id=" + id,
+            type: "delete",
+            success: function (res) {
+                console.log(res);
+            }
+        });
+    });
+</script>
+
+</html>
