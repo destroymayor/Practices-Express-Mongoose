@@ -1,5 +1,5 @@
-nodejs express + mongoose 實踐基本用戶列表
+## Node.js Express + Mongoose 實踐基本用戶列表
 
-`npm i` 安裝
+安裝 `npm install`
 
-`/users/list ` 用戶列表
+用戶列表 `/users/list `
